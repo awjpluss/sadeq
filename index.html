@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sadeq Al-Ari | Portfolio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar for Chat */
+        .scrollbar-custom::-webkit-scrollbar {
+            width: 4px;
+        }
+        .scrollbar-custom::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .scrollbar-custom::-webkit-scrollbar-thumb {
+            background: rgba(6, 182, 212, 0.3);
+            border-radius: 10px;
+        }
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* FadeInUp Animation Classes */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.17, 0.55, 0.55, 1);
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #030308;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background-color: #06b6d4;
+            color: white;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen font-sans">
+
+    <!-- Interactive Background Glow (Follows Mouse) -->
+    <div id="mouse-glow" class="pointer-events-none fixed inset-0 z-0 transition-opacity duration-300" style="background: radial-gradient(600px circle at 0px 0px, rgba(6,182,212,0.06), transparent 40%)"></div>
+
+    <!-- Static Background Effects -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute top-[-10%] right-[-5%] w-[40vw] h-[40vw] rounded-full bg-cyan-900/10 blur-[120px] animate-pulse"></div>
+        <div class="absolute bottom-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-purple-900/10 blur-[150px] animate-pulse delay-1000"></div>
+        <!-- Grid Pattern -->
+        <div class="absolute inset-0 opacity-60" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+CjxyZWN0IHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgZmlsbD0ibm9uZSIvPgo8cGF0aCBkPSJNMCAwaDQwdjQwSDB6IiBmaWxsPSJub25lIi8+CjxwYXRoIGQ9Ik0wIDAuNWg0ME0wIDM5LjVoNDBNMC41IDB2NDBNMzkuNSAwdjQwIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4wMikiIHN0cm9rZS13aWR0aD0iMSIvPgo8L3N2Zz4=');"></div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <nav class="fixed top-0 w-full z-40 bg-[#030308]/70 backdrop-blur-xl border-b border-white/5 py-4 px-6 md:px-12 flex justify-between items-center">
+        <div class="text-2xl font-black tracking-tight">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">SADEQ</span>
+            <span class="text-white">.DEV</span>
+        </div>
+        <div class="hidden md:flex gap-8 text-sm font-medium">
+            <a href="#about" class="text-slate-400 hover:text-cyan-400 transition-colors">عن المهندس</a>
+            <a href="#expertise" class="text-slate-400 hover:text-cyan-400 transition-colors">المجالات</a>
+            <a href="#skills" class="text-slate-400 hover:text-cyan-400 transition-colors">المهارات</a>
+        </div>
+        <a href="#contact" class="px-6 py-2.5 rounded-full bg-white/5 border border-cyan-500/30 text-cyan-400 text-sm font-bold hover:bg-cyan-500 hover:text-white hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all">
+            تواصل الآن
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative z-10 min-h-screen flex flex-col justify-center items-center text-center px-4 pt-20">
+        <div class="fade-in-up inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 mb-8 backdrop-blur-sm" style="transition-delay: 0s;">
+            <i data-lucide="zap" class="w-4 h-4 text-cyan-400 animate-pulse"></i>
+            <span class="text-xs md:text-sm text-cyan-100 font-medium tracking-wide">أكثر من 9 سنوات من الإبداع والإنتاج المستمر</span>
+        </div>
+
+        <div class="fade-in-up" style="transition-delay: 0.1s;">
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-black mb-6 tracking-tighter">
+                <span class="text-white drop-shadow-lg">صادق</span>
+                <span class="bg-clip-text text-transparent bg-gradient-to-l from-cyan-400 via-blue-500 to-purple-600 ml-4 drop-shadow-2xl">العري</span>
+            </h1>
+        </div>
+
+        <div class="fade-in-up" style="transition-delay: 0.2s;">
+            <p class="text-xl md:text-3xl text-slate-400 mb-10 max-w-2xl font-light">
+                خبير تقني | مطور تطبيقات ومواقع | فنان رقمي 3D
+            </p>
+        </div>
+
+        <div class="fade-in-up flex flex-wrap justify-center gap-4 mb-16" style="transition-delay: 0.3s;">
+            <div class="flex items-center gap-2 bg-slate-900/40 backdrop-blur-md border border-white/5 px-6 py-3 rounded-2xl shadow-xl hover:border-cyan-500/50 transition-colors">
+                <i data-lucide="code" class="w-5 h-5 text-cyan-400"></i>
+                <span class="font-medium">+3 لغات برمجية</span>
+            </div>
+            <div class="flex items-center gap-2 bg-slate-900/40 backdrop-blur-md border border-white/5 px-6 py-3 rounded-2xl shadow-xl hover:border-purple-500/50 transition-colors">
+                <i data-lucide="box" class="w-5 h-5 text-purple-400"></i>
+                <span class="font-medium">أصول رقمية 3D</span>
+            </div>
+            <div class="flex items-center gap-2 bg-slate-900/40 backdrop-blur-md border border-white/5 px-6 py-3 rounded-2xl shadow-xl hover:border-blue-500/50 transition-colors">
+                <i data-lucide="globe" class="w-5 h-5 text-blue-400"></i>
+                <span class="font-medium">أنظمة سحابية</span>
+            </div>
+        </div>
+
+        <a href="#about" class="absolute bottom-10 animate-bounce p-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors backdrop-blur-sm group">
+            <i data-lucide="chevron-down" class="w-6 h-6 text-slate-400 group-hover:text-cyan-400 transition-colors"></i>
+        </a>
+    </section>
+
+    <!-- Aouj Plus Pride Section -->
+    <section id="about" class="relative z-10 py-24 px-4 md:px-12 bg-gradient-to-b from-transparent via-[#080d1f] to-transparent">
+        <div class="max-w-5xl mx-auto fade-in-up">
+            <div class="relative p-[1px] rounded-3xl bg-gradient-to-r from-cyan-500 via-purple-500 to-blue-500 shadow-[0_0_50px_rgba(6,182,212,0.15)]">
+                <div class="bg-[#050510] p-10 md:p-16 rounded-[23px] h-full w-full relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 blur-[80px] rounded-full"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-center mb-8">
+                            <div class="p-4 rounded-full bg-amber-500/10 border border-amber-500/20">
+                                <i data-lucide="star" class="w-10 h-10 text-amber-400 fill-amber-400/30"></i>
+                            </div>
+                        </div>
+                        <h2 class="text-2xl md:text-4xl text-center font-bold mb-8 text-white leading-relaxed">
+                            بكل فخر واعتزاز، يسعدنا في <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">"أوج بلس"</span> أن نستعرض مسيرة مهندسنا
+                        </h2>
+                        <p class="text-lg md:text-2xl text-slate-300 text-center leading-loose font-light">
+                            الأستاذ صادق ليس مجرد مبرمج، بل هو <span class="text-white font-bold">قامة تقنية وفنان رقمي</span>. نحن نتشرف بأن نكون الحاضنين لمثل هذه الكفاءات العالية التي تضمن لك الحصول على منتج رقمي بأعلى معايير الجودة العالمية وبصناعة عربية محترفة.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Areas -->
+    <section id="expertise" class="relative z-10 py-24 px-4 md:px-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 fade-in-up">
+                <h2 class="text-4xl md:text-6xl font-black mb-6">مجالات <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">الإبداع</span></h2>
+                <p class="text-xl text-slate-400 font-light">بصمة واضحة ومؤثرة في الوطن العربي عبر عدة قطاعات</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Item 1 -->
+                <div class="fade-in-up group relative p-8 md:p-10 rounded-3xl bg-[#0a0a16] border border-white/5 hover:border-cyan-500/30 transition-all duration-500 hover:-translate-y-3 h-full overflow-hidden shadow-xl hover:shadow-[0_20px_40px_rgba(6,182,212,0.1)]" style="transition-delay: 0s;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="mb-8 p-5 rounded-2xl bg-white/5 border border-white/10 inline-block group-hover:scale-110 transition-transform duration-500 group-hover:bg-cyan-500/10 group-hover:border-cyan-500/30">
+                            <i data-lucide="smartphone" class="w-8 h-8 text-cyan-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-5">تطوير البرمجيات والتطبيقات</h3>
+                        <p class="text-slate-400 leading-relaxed text-base font-light">
+                            مطور ومبرمج خبير، أشرف على صنع أقوى البرامج عربياً. مبتكر 'تطبيق توقع المباريات' الشهير، ويتقن لغات برمجية متعددة.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="fade-in-up group relative p-8 md:p-10 rounded-3xl bg-[#0a0a16] border border-white/5 hover:border-cyan-500/30 transition-all duration-500 hover:-translate-y-3 h-full overflow-hidden shadow-xl hover:shadow-[0_20px_40px_rgba(6,182,212,0.1)]" style="transition-delay: 0.1s;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="mb-8 p-5 rounded-2xl bg-white/5 border border-white/10 inline-block group-hover:scale-110 transition-transform duration-500 group-hover:bg-cyan-500/10 group-hover:border-cyan-500/30">
+                            <i data-lucide="globe" class="w-8 h-8 text-purple-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-5">تأسيس المتاجر والأنظمة السحابية</h3>
+                        <p class="text-slate-400 leading-relaxed text-base font-light">
+                            أحد المؤسسين لأكبر المواقع الإلكترونية والمتاجر في المنطقة. يمتلك رؤية تقنية وتجارية فريدة في بناء المنصات السحابية.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="fade-in-up group relative p-8 md:p-10 rounded-3xl bg-[#0a0a16] border border-white/5 hover:border-cyan-500/30 transition-all duration-500 hover:-translate-y-3 h-full overflow-hidden shadow-xl hover:shadow-[0_20px_40px_rgba(6,182,212,0.1)]" style="transition-delay: 0.2s;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="mb-8 p-5 rounded-2xl bg-white/5 border border-white/10 inline-block group-hover:scale-110 transition-transform duration-500 group-hover:bg-cyan-500/10 group-hover:border-cyan-500/30">
+                            <i data-lucide="box" class="w-8 h-8 text-amber-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-5">ريادة أعمال 3D والأنيميشن</h3>
+                        <p class="text-slate-400 leading-relaxed text-base font-light">
+                            مالك أكبر المتاجر السعودية للمجسمات ثلاثية الأبعاد. له مشاركات بارزة في إنتاج الأنيميشن وصناعة الأصول الرقمية.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Experience -->
+    <section id="skills" class="relative z-10 py-24 px-4 md:px-12 bg-[#050510]/50 backdrop-blur-lg border-y border-white/5">
+        <div class="max-w-6xl mx-auto">
+            <!-- Tabs Navigation -->
+            <div class="flex flex-wrap justify-center gap-4 mb-16" id="tabs-nav">
+                <button onclick="switchTab('skills')" id="btn-skills" class="px-8 py-4 rounded-2xl text-sm md:text-base font-bold transition-all duration-300 bg-cyan-500 text-white shadow-[0_0_20px_rgba(6,182,212,0.4)] scale-105">
+                    المهارات التقنية
+                </button>
+                <button onclick="switchTab('experience')" id="btn-experience" class="px-8 py-4 rounded-2xl text-sm md:text-base font-bold transition-all duration-300 bg-[#0a0a16] border border-white/5 text-slate-400 hover:bg-white/5 hover:text-white">
+                    المسيرة المهنية
+                </button>
+                <button onclick="switchTab('languages')" id="btn-languages" class="px-8 py-4 rounded-2xl text-sm md:text-base font-bold transition-all duration-300 bg-[#0a0a16] border border-white/5 text-slate-400 hover:bg-white/5 hover:text-white">
+                    اللغات والتواصل
+                </button>
+            </div>
+
+            <!-- Tabs Content -->
+            <div class="min-h-[400px] relative">
+                
+                <!-- Skills Tab -->
+                <div id="tab-skills" class="tab-content fade-in-up visible">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                        <div class="bg-[#0a0a16] p-8 md:p-10 rounded-3xl border border-white/5">
+                            <h3 class="text-2xl font-bold mb-8 flex items-center gap-4 text-white">
+                                <div class="p-3 rounded-xl bg-cyan-500/10 text-cyan-400"><i data-lucide="cpu" class="w-6 h-6"></i></div> 
+                                مهارات برمجية وفنية
+                            </h3>
+                            <div class="flex flex-wrap gap-3" id="hard-skills-container">
+                                <!-- Skills injected via JS -->
+                            </div>
+                        </div>
+                        <div class="bg-[#0a0a16] p-8 md:p-10 rounded-3xl border border-white/5">
+                            <h3 class="text-2xl font-bold mb-8 flex items-center gap-4 text-white">
+                                <div class="p-3 rounded-xl bg-purple-500/10 text-purple-400"><i data-lucide="layers" class="w-6 h-6"></i></div> 
+                                المهارات الشخصية
+                            </h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="soft-skills-container">
+                                <!-- Soft Skills injected via JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Tab -->
+                <div id="tab-experience" class="tab-content hidden fade-in-up">
+                    <div class="max-w-3xl mx-auto relative border-r-2 border-cyan-500/20 pr-10" id="timeline-container">
+                        <!-- Timeline injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Languages Tab -->
+                <div id="tab-languages" class="tab-content hidden fade-in-up">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="languages-container">
+                        <!-- Languages injected via JS -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <section id="contact" class="relative z-10 py-24 px-4 md:px-12 text-center">
+        <div class="fade-in-up max-w-5xl mx-auto bg-gradient-to-b from-[#0a0a16] to-[#050510] p-12 md:p-20 rounded-[40px] border border-white/5 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 blur-[80px]"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-600/10 blur-[80px]"></div>
+            
+            <h2 class="text-4xl md:text-5xl font-black mb-6 text-white tracking-tight">هل لديك مشروع قادم؟</h2>
+            <p class="text-xl text-slate-400 mb-12 max-w-2xl mx-auto font-light">
+                دعنا نتعاون لتحويل أفكارك إلى منتجات رقمية احترافية تتحدث عن نفسها.
+            </p>
+
+            <div class="flex flex-wrap justify-center items-center gap-6 mb-16">
+                <!-- WhatsApp Button -->
+                <a href="https://wa.me/966573934915" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 bg-gradient-to-r from-green-600/20 to-emerald-500/20 border border-green-500/30 px-6 py-4 rounded-2xl hover:bg-green-500/30 hover:scale-105 transition-all duration-300 group">
+                    <div class="p-3 rounded-full bg-green-500 text-white shadow-[0_0_15px_rgba(34,197,94,0.5)] group-hover:animate-pulse">
+                        <i data-lucide="message-square" class="w-6 h-6"></i>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xs text-green-400 font-bold mb-1">تواصل عبر الواتساب</p>
+                        <span dir="ltr" class="font-black text-xl text-white block">+966 57 393 4915</span>
+                    </div>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:sadeq.alari@outlook.com" class="flex items-center gap-4 bg-white/5 border border-white/10 px-6 py-4 rounded-2xl hover:bg-white/10 hover:border-cyan-500/30 hover:scale-105 transition-all duration-300">
+                    <div class="p-3 rounded-full bg-[#050510] text-cyan-400 border border-white/5"><i data-lucide="mail" class="w-5 h-5"></i></div>
+                    <div class="text-right">
+                        <p class="text-xs text-slate-400 mb-1">البريد الإلكتروني</p>
+                        <span dir="ltr" class="font-semibold text-white">sadeq.alari@outlook.com</span>
+                    </div>
+                </a>
+
+                <!-- Secondary Phone -->
+                <a href="tel:+967734405949" class="flex items-center gap-4 bg-white/5 border border-white/10 px-6 py-4 rounded-2xl hover:bg-white/10 hover:border-cyan-500/30 hover:scale-105 transition-all duration-300">
+                    <div class="p-3 rounded-full bg-[#050510] text-cyan-400 border border-white/5"><i data-lucide="phone" class="w-5 h-5"></i></div>
+                    <div class="text-right">
+                        <p class="text-xs text-slate-400 mb-1">اتصال مباشر (اليمن)</p>
+                        <span dir="ltr" class="font-semibold text-white">+967 734405949</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="inline-flex items-center gap-3 text-slate-300 bg-[#050510] border border-white/5 px-6 py-3 rounded-full">
+                <i data-lucide="map-pin" class="w-5 h-5 text-cyan-400"></i>
+                <span class="font-medium">المقر الحالي: جدة، المملكة العربية السعودية</span>
+            </div>
+        </div>
+
+        <footer class="mt-24 pt-8 border-t border-white/5 text-slate-500 flex flex-col md:flex-row justify-between items-center gap-6 max-w-6xl mx-auto">
+            <p class="text-sm">© 2024 Sadeq Al-Ari. All rights reserved.</p>
+            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/5">
+                <span class="text-xs">Powered & Proudly presented by</span>
+                <span class="text-cyan-500 font-black tracking-wide">أوج بلس</span>
+            </div>
+        </footer>
+    </section>
+
+    <!-- AI ChatBot HTML -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <!-- Chat Window -->
+        <div id="chat-window" class="transition-all duration-500 origin-bottom-right scale-0 opacity-0 pointer-events-none h-0 w-[90vw] md:w-[380px] bg-[#050510]/95 backdrop-blur-xl border border-cyan-500/30 rounded-2xl shadow-[0_0_40px_rgba(6,182,212,0.15)] flex flex-col overflow-hidden" style="max-height: 70vh;">
+            
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-slate-900 to-[#0a0a16] p-4 border-b border-white/10 flex justify-between items-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-cyan-500/10 animate-pulse"></div>
+                <div class="flex items-center gap-3 relative z-10">
+                    <div class="relative">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center p-0.5">
+                            <div class="w-full h-full bg-[#050510] rounded-full flex items-center justify-center">
+                                <i data-lucide="bot" class="w-5 h-5 text-cyan-400"></i>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-[#050510]"></div>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-bold text-sm">Sadeq's AI Assistant</h3>
+                        <p class="text-cyan-400 text-xs flex items-center gap-1"><i data-lucide="sparkles" class="w-3 h-3"></i> متصل الآن</p>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="text-slate-400 hover:text-white transition-colors relative z-10">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Chat Body -->
+            <div id="chat-messages" class="flex-1 overflow-y-auto p-4 scrollbar-custom flex flex-col gap-4">
+                <!-- Initial Bot Message -->
+                <div class="flex justify-start">
+                    <div class="max-w-[85%] p-3 rounded-2xl text-sm leading-relaxed bg-white/5 border border-white/10 text-slate-200 rounded-tl-none">
+                        أهلاً بك! أنا المساعد الذكي الخاص بالمهندس صادق العري. كيف يمكنني إبهارك اليوم؟
+                    </div>
+                </div>
+                <!-- Typing Indicator (Hidden by default) -->
+                <div id="typing-indicator" class="hidden flex justify-start">
+                    <div class="bg-white/5 border border-white/10 rounded-2xl rounded-tl-none p-4 flex gap-1">
+                        <div class="w-2 h-2 rounded-full bg-cyan-400 animate-bounce"></div>
+                        <div class="w-2 h-2 rounded-full bg-cyan-400 animate-bounce" style="animation-delay: 0.2s"></div>
+                        <div class="w-2 h-2 rounded-full bg-cyan-400 animate-bounce" style="animation-delay: 0.4s"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Questions -->
+            <div id="quick-questions" class="p-3 border-t border-white/5 bg-slate-900/50 overflow-x-auto whitespace-nowrap flex gap-2 scrollbar-none">
+                <!-- Injected via JS -->
+            </div>
+
+            <!-- Input -->
+            <div class="p-3 bg-[#050510] border-t border-white/10 flex gap-2">
+                <input 
+                    type="text" 
+                    id="chat-input"
+                    placeholder="اسألني أي شيء..."
+                    class="flex-1 bg-white/5 border border-white/10 rounded-full px-4 py-2 text-sm text-white focus:outline-none focus:border-cyan-500 transition-colors"
+                />
+                <button 
+                    id="chat-send"
+                    onclick="handleAskFromInput()"
+                    class="w-10 h-10 rounded-full bg-cyan-500 flex items-center justify-center text-white hover:bg-cyan-400 transition-colors"
+                >
+                    <i data-lucide="send" class="w-4 h-4 ml-1"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Floating Button -->
+        <button 
+            id="chat-toggle-btn"
+            onclick="toggleChat()"
+            class="w-14 h-14 rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all duration-300 hover:scale-110 z-50 bg-gradient-to-r from-cyan-500 to-blue-600 relative mt-4"
+        >
+            <div id="chat-icon-msg"><i data-lucide="message-square" class="w-6 h-6"></i></div>
+            <div id="chat-icon-close" class="hidden"><i data-lucide="x" class="w-6 h-6"></i></div>
+            <span id="chat-badge" class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full animate-ping"></span>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // -----------------------------
+        // Data Configuration
+        // -----------------------------
+        const hardSkills = ["Flutter", "Android Studio", "Java", "C++", "C#", "Dart", "JS/CSS/HTML", "Blender 3D", "Photoshop", "Marvelous Designer", "Premiere", "VS Code"];
+        const softSkills = ["التواصل الفعال", "الاستماع النشط", "حل النزاعات", "إدارة الوقت", "التفاوض", "الصبر"];
+        const languagesData = [
+            { name: "العربية", level: "اللغة الأم", icon: "🇸🇦" },
+            { name: "الإنجليزية", level: "ممتاز (دبلوم 2018-2019)", icon: "🇬🇧" },
+            { name: "الصينية", level: "متقدم", icon: "🇨🇳" }
+        ];
+        const timelineData = [
+            { year: "2022 - الآن", role: "مطور تطبيقات وويب | فنان 3D", detail: "إطلاق تطبيقات على Google Play، وإنتاج مسلسلات أنيميشن." },
+            { year: "2021 - 2022", role: "معلم برمجة وأمن سيبراني", detail: "تدريس أساسيات الأمن السيبراني، جافا، C++، وتطوير الويب." },
+            { year: "2018 - 2020", role: "معلم لغة إنجليزية | مصمم", detail: "دورات أونلاين وتأسيس المهارات في برامج التصميم والمونتاج." },
+            { year: "2015 - 2016", role: "الثانوية العامة (القسم العلمي)", detail: "مدرسة عمر المختار", isSecondary: true }
+        ];
+
+        const knowledgeBase = {
+            'من هو صادق': 'الأستاذ صادق العري هو مطور برمجيات وفنان 3D يمتلك خبرة تمتد لأكثر من 9 سنوات. وهو من الركائز الأساسية في "أوج بلس" ومبتكر تطبيق "توقع المباريات".',
+            'المهارات': 'يتقن تطوير تطبيقات الويب والموبايل باستخدام (Flutter, Java, C++, Dart)، بالإضافة لخبرته العميقة في عالم الـ 3D والأنيميشن باستخدام (Blender, Marvelous Designer).',
+            'الـ 3D': 'يعد صاحب أكبر المتاجر السعودية المتخصصة في صناعة وتطوير المجسمات ثلاثية الأبعاد (3D)، وله مشاركات بارزة في إنتاج مسلسلات الأنيميشن.',
+            'التواصل': 'يمكنك التواصل معه مباشرة عبر الواتساب على الرقم: +966573934915، أو عبر الإيميل sadeq.alari@outlook.com. مقره الحالي في جدة، السعودية.'
+        };
+
+        // -----------------------------
+        // Populate DOM Elements
+        // -----------------------------
+        
+        // Populate Hard Skills
+        const hsContainer = document.getElementById('hard-skills-container');
+        hardSkills.forEach(skill => {
+            hsContainer.innerHTML += `<span class="px-5 py-2.5 rounded-xl bg-[#050510] border border-white/10 text-slate-300 hover:border-cyan-500 hover:text-cyan-400 transition-colors cursor-default shadow-sm">${skill}</span>`;
+        });
+
+        // Populate Soft Skills
+        const ssContainer = document.getElementById('soft-skills-container');
+        softSkills.forEach(skill => {
+            ssContainer.innerHTML += `
+                <div class="flex items-center gap-4 p-4 rounded-xl bg-[#050510] border border-white/5">
+                    <div class="w-2.5 h-2.5 rounded-full bg-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
+                    <span class="text-slate-300 font-medium">${skill}</span>
+                </div>`;
+        });
+
+        // Populate Experience
+        const expContainer = document.getElementById('timeline-container');
+        timelineData.forEach(item => {
+            if(item.isSecondary) {
+                expContainer.innerHTML += `
+                    <div class="relative group">
+                        <div class="absolute -right-[45px] top-1.5 w-6 h-6 rounded-full bg-[#050510] border-4 border-slate-600 group-hover:border-white transition-colors"></div>
+                        <div class="inline-block px-4 py-1.5 rounded-full bg-white/5 text-slate-400 text-sm font-bold mb-4 border border-white/10">${item.year}</div>
+                        <h4 class="text-xl text-slate-200 mb-2 font-bold">${item.role}</h4>
+                        <p class="text-slate-500">${item.detail}</p>
+                    </div>`;
+            } else {
+                expContainer.innerHTML += `
+                    <div class="mb-12 relative group">
+                        <div class="absolute -right-[45px] top-1.5 w-6 h-6 rounded-full bg-[#050510] border-4 border-cyan-500 shadow-[0_0_15px_rgba(6,182,212,0.5)] group-hover:scale-125 transition-transform"></div>
+                        <div class="inline-block px-4 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 text-sm font-bold mb-4 border border-cyan-500/20">${item.year}</div>
+                        <h4 class="text-2xl font-bold text-white mb-3">${item.role}</h4>
+                        <p class="text-slate-400 leading-relaxed">${item.detail}</p>
+                    </div>`;
+            }
+        });
+
+        // Populate Languages
+        const langContainer = document.getElementById('languages-container');
+        languagesData.forEach(lang => {
+            langContainer.innerHTML += `
+                <div class="bg-[#0a0a16] border border-white/5 rounded-3xl p-10 text-center hover:bg-white/5 transition-colors group">
+                    <div class="text-6xl mb-6 group-hover:scale-110 transition-transform origin-center">${lang.icon}</div>
+                    <h4 class="text-2xl font-bold text-white mb-3">${lang.name}</h4>
+                    <p class="text-cyan-400 font-medium bg-cyan-500/10 inline-block px-4 py-1.5 rounded-full border border-cyan-500/20">${lang.level}</p>
+                </div>`;
+        });
+
+        // Populate Quick Questions
+        const qContainer = document.getElementById('quick-questions');
+        Object.keys(knowledgeBase).forEach(q => {
+            const btn = document.createElement('button');
+            btn.className = "inline-block px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs hover:bg-cyan-500/20 transition-colors";
+            btn.innerText = q + " ؟";
+            btn.onclick = () => handleAsk(q);
+            qContainer.appendChild(btn);
+        });
+
+        // -----------------------------
+        // Mouse Tracking
+        // -----------------------------
+        const glow = document.getElementById('mouse-glow');
+        window.addEventListener('mousemove', (e) => {
+            glow.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(6,182,212,0.06), transparent 40%)`;
+        });
+
+        // -----------------------------
+        // Intersection Observer (Fade In)
+        // -----------------------------
+        const observerOptions = {
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // -----------------------------
+        // Tabs Logic
+        // -----------------------------
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('visible'); // reset animation
+            });
+            
+            // Show selected tab
+            const activeTab = document.getElementById(`tab-${tabId}`);
+            activeTab.classList.remove('hidden');
+            
+            // trigger reflow to restart animation
+            void activeTab.offsetWidth; 
+            activeTab.classList.add('visible');
+
+            // Update buttons styling
+            const inactiveClassList = "px-8 py-4 rounded-2xl text-sm md:text-base font-bold transition-all duration-300 bg-[#0a0a16] border border-white/5 text-slate-400 hover:bg-white/5 hover:text-white".split(" ");
+            const activeClassList = "px-8 py-4 rounded-2xl text-sm md:text-base font-bold transition-all duration-300 bg-cyan-500 text-white shadow-[0_0_20px_rgba(6,182,212,0.4)] scale-105".split(" ");
+
+            ['skills', 'experience', 'languages'].forEach(id => {
+                const btn = document.getElementById(`btn-${id}`);
+                btn.className = ''; // clear classes
+                if(id === tabId) {
+                    btn.classList.add(...activeClassList);
+                } else {
+                    btn.classList.add(...inactiveClassList);
+                }
+            });
+        }
+
+        // -----------------------------
+        // AI Chatbot Logic
+        // -----------------------------
+        let isChatOpen = false;
+        let isTyping = false;
+        const chatWindow = document.getElementById('chat-window');
+        const chatToggleBtn = document.getElementById('chat-toggle-btn');
+        const chatIconMsg = document.getElementById('chat-icon-msg');
+        const chatIconClose = document.getElementById('chat-icon-close');
+        const chatBadge = document.getElementById('chat-badge');
+        const chatMessages = document.getElementById('chat-messages');
+        const typingIndicator = document.getElementById('typing-indicator');
+        const chatInput = document.getElementById('chat-input');
+        const chatSend = document.getElementById('chat-send');
+
+        function toggleChat() {
+            isChatOpen = !isChatOpen;
+            if(isChatOpen) {
+                // Open Chat
+                chatWindow.classList.remove('scale-0', 'opacity-0', 'pointer-events-none', 'h-0');
+                chatWindow.classList.add('scale-100', 'opacity-100', 'mb-4', 'min-h-[400px]');
+                chatToggleBtn.classList.remove('bg-gradient-to-r', 'from-cyan-500', 'to-blue-600');
+                chatToggleBtn.classList.add('bg-slate-800', 'rotate-90');
+                chatIconMsg.classList.add('hidden');
+                chatIconClose.classList.remove('hidden');
+                if(chatBadge) chatBadge.classList.add('hidden');
+                scrollToBottom();
+            } else {
+                // Close Chat
+                chatWindow.classList.add('scale-0', 'opacity-0', 'pointer-events-none', 'h-0');
+                chatWindow.classList.remove('scale-100', 'opacity-100', 'mb-4', 'min-h-[400px]');
+                chatToggleBtn.classList.add('bg-gradient-to-r', 'from-cyan-500', 'to-blue-600');
+                chatToggleBtn.classList.remove('bg-slate-800', 'rotate-90');
+                chatIconMsg.classList.remove('hidden');
+                chatIconClose.classList.add('hidden');
+            }
+        }
+
+        function appendMessage(sender, text) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+            msgDiv.innerHTML = `
+                <div class="max-w-[85%] p-3 rounded-2xl text-sm leading-relaxed ${
+                    sender === 'user' 
+                    ? 'bg-gradient-to-l from-cyan-500 to-blue-600 text-white rounded-tr-none' 
+                    : 'bg-white/5 border border-white/10 text-slate-200 rounded-tl-none'
+                }">
+                    ${text}
+                </div>
+            `;
+            chatMessages.insertBefore(msgDiv, typingIndicator);
+            scrollToBottom();
+        }
+
+        function scrollToBottom() {
+            setTimeout(() => {
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 100);
+        }
+
+        function handleAsk(question) {
+            if(isTyping || !question.trim()) return;
+            
+            // Add user message
+            appendMessage('user', question);
+            
+            // Show typing
+            isTyping = true;
+            typingIndicator.classList.remove('hidden');
+            chatInput.value = '';
+            scrollToBottom();
+            
+            // Disable inputs
+            const qBtns = document.querySelectorAll('#quick-questions button');
+            qBtns.forEach(b => b.disabled = true);
+            chatInput.disabled = true;
+            chatSend.disabled = true;
+
+            // Simulate AI
+            setTimeout(() => {
+                // Find Answer
+                let answer = "أنا مبرمج للرد على الاستفسارات حول خبرات ومهارات الأستاذ صادق. جرب سؤالي عن مهاراته، مشاريعه، أو طرق التواصل!";
+                
+                if (knowledgeBase[question]) {
+                    answer = knowledgeBase[question];
+                } else {
+                    const match = Object.entries(knowledgeBase).find(([key, val]) => question.includes(key));
+                    if(match) answer = match[1];
+                }
+
+                // Remove typing and add bot message
+                typingIndicator.classList.add('hidden');
+                appendMessage('bot', answer);
+                
+                // Re-enable inputs
+                isTyping = false;
+                qBtns.forEach(b => b.disabled = false);
+                chatInput.disabled = false;
+                chatSend.disabled = false;
+                chatInput.focus();
+                
+            }, 1500);
+        }
+
+        function handleAskFromInput() {
+            handleAsk(chatInput.value);
+        }
+
+        // Enter key support for chat
+        chatInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                handleAskFromInput();
+            }
+        });
+
+    </script>
+</body>
+</html>
